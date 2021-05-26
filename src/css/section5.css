@@ -1,0 +1,31 @@
+.section5 {
+  width: 100%;
+  height: 370px;
+  background: #0f0f0f;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.section5_brands_title {
+  font-size: 36px;
+  line-height: 48px;
+  color: white;
+  text-transform: uppercase;
+  margin-top: 30px;
+}
+
+.section5_brands_hr {
+  width: 120px;
+  border: 1px solid white;
+  margin-top: 70px;
+}
+
+.section5_brand_images {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 80px;
+  flex-direction: row;
+}
