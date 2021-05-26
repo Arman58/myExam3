@@ -1,0 +1,91 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.section2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.watches {
+  background-color: black;
+  width: 55%;
+  height: 730px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-direction: column;
+}
+
+.watch_hr {
+  border: 1px solid white;
+  width: 120px;
+}
+
+.watchDiv {
+  margin-right: 20px;
+}
+
+.watches3 {
+  display: flex;
+}
+
+.watch {
+  width: 240px;
+  height: 320px;
+  background: gray;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.watch_title {
+  color: white;
+}
+
+.watch_price {
+  color: white;
+}
+
+.description {
+  margin-top: 30px;
+}
+
+.manDiv {
+  background: url("../../img/body_bg.jpg");
+  width: 45%;
+  height: 730px;
+  background-color: gray;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  flex-direction: column;
+}
+
+.manDiv_title {
+  color: white;
+  font-size: 36px;
+  line-height: 48px;
+}
+
+.manDiv_hr {
+  width: 120px;
+  border: 1px solid white;
+  margin-top: 30px;
+}
+
+.manDiv_href {
+  padding: 15px 65px;
+  border: 1px solid white;
+  margin-top: 50px;
+  background: none;
+  text-decoration: none;
+  outline: none;
+  color: white;
+  margin-bottom: 100px;
+}
