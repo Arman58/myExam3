@@ -1,0 +1,14 @@
+nav.menu        
+    .header_menu_title
+        h1
+            a(href="#" class="path title_path") PORTEN 
+    .menu_title      
+        - var x =["Понравилось","Личный кабинет","настройки"]
+        - for(var i=0;i<x.length;i++){
+            .menu_paths    
+                a(href="#" class="path")=x[i]
+        - }
+        .menu_paths__icon 
+            img(src="img/basket.png", alt="" class="margin_icon")
+        .menu_paths__icon    
+            img(src="img/search.png", alt="")
