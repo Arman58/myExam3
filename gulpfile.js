@@ -3,10 +3,11 @@ const gulp = require("gulp");
 const pug = require("gulp-pug");
 const cssMinify = require("gulp-clean-css");
 const cssConcat = require("gulp-concat-css");
-const concatJs = require("gulp-concat");
 const del = require("del");
+const ttf2woff = require("gulp-ttf2woff");
+const ttf2woff2 = require("gulp-ttf2woff2");
+const fonter = require("gulp-fonter");
 const browserSync = require("browser-sync").create();
-const uglifyJs = require("gulp-uglify");
 const imagemin = require("gulp-imagemin");
 const project_folder = "dist";
 const source_folder = "src";
@@ -14,21 +15,18 @@ const source_folder = "src";
 let path = {
   build: {
     css: project_folder + "/css/",
-    js: project_folder + "/js/",
     img: project_folder + "/img/",
     fonts: project_folder + "/fonts/",
   },
   src: {
     pug: source_folder + "/*.pug",
     css: source_folder + "/**/*.css",
-    js: source_folder + "/**/*.js",
-    img: source_folder + "/**/*.{png,gif,jpg,jpeg,svg,ico,webp}",
-    fonts: source_folder + "/**/*.ttf",
+    img: source_folder + "/**/*.{png,jpg}",
     pug: source_folder + "/**/*.pug",
+    fonts: source_folder + "/**/*.ttf",
   },
   watch: {
     css: project_folder + "/**/*css",
-    js: source_folder + "/**/*js",
     img: source_folder + "/**/*img",
     pug: source_folder + "/**/*pug",
   },
@@ -60,16 +58,23 @@ function css(params) {
     .pipe(browserSync.stream());
 }
 
-// function js(params) {
-//   return src(path.src.js)
-//     .pipe(concatJs("all.js"))
-//     .pipe(uglifyJs())
-//     .pipe(dest(path.build.js))
-//     .pipe(browserSync.stream());
-// }
-
 function img(params) {
   return src(path.src.img).pipe(imagemin()).pipe(dest("dist"));
+}
+
+function fonts() {
+  src(path.src.fonts).pipe(ttf2woff()).pipe(dest(path.build.fonts));
+  return src(path.src.fonts).pipe(ttf2woff2()).pipe(dest(path.build.fonts));
+}
+//fonts otf
+function fontsotf() {
+  return src(path.src + "**/*.otf")
+    .pipe(
+      fonter({
+        formats: ["ttf"],
+      })
+    )
+    .pipe(dest(path.src.fonts));
 }
 
 function watchFiles(params) {
@@ -87,6 +92,8 @@ const watch1 = series(
   css,
   img,
   pugfunction,
+  fontsotf,
+  fonts,
   parallel(browsersync, watchFiles)
 );
 exports.css = css;
@@ -94,5 +101,7 @@ exports.img = img;
 // exports.js = js;
 exports.clean = clean;
 exports.pugfunction = pugfunction;
+exports.fonts = fonts;
+exports.fontsotf = fontsotf;
 exports.watch1 = watch1;
 exports.default = watch1;
