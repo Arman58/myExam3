@@ -36,7 +36,7 @@
 .watch {
   width: 240px;
   height: 320px;
-  background: gray;
+  background: #191b1c;
   display: flex;
   justify-content: center;
   align-items: center;
